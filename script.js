@@ -1,18 +1,19 @@
-function beforesubmit() {
-    let outputdate = document.querySelector(".outputdate");
-    let inputdate = document.querySelector(".inputdate");
-    console.log("inputdate.value", inputdate.value);
+let capthachecked = false;
 
-    let formatedDate = new Date(inputdate.value).toLocaleDateString('ur-PK');
-    outputdate.value = formatedDate;
+function beforesubmit(event) {
+    if (capthachecked) {
+        let outputdate = document.querySelector(".outputdate");
+        let inputdate = document.querySelector(".inputdate");
+        console.log("inputdate.value", inputdate.value);
 
-    var response = grecaptcha.getResponse();
-    if (response.length === 0) {
-        alert("Please check reCAPTCHA before submitting the form!");
-        return false;
+        let formatedDate = new Date(inputdate.value).toLocaleDateString('ur-PK');
+        outputdate.value = formatedDate;
     }
-    return true;
+    alert("Please check the reCAPTCHA box to submit the lead");
+    event.preventDefault();
+
 }
+
 
 function timestamp() {
     var response = document.getElementById("g-recaptcha-response");
@@ -24,16 +25,4 @@ function timestamp() {
 }
 setInterval(timestamp, 500);
 
-document.addEventListener("DOMContentLoaded", function() {
-    var form = document.getElementById("leadForm");
-    form.addEventListener("submit", function(event) {
-        event.preventDefault();
-        var response = grecaptcha.getResponse();
-        if (response.length === 0) {
-            alert("Please check reCAPTCHA before submitting the form!");
-            return false;
-        } else {
-            form.submit();
-        }
-    });
-});
+function capthchasuccess() { capthachecked = true }
