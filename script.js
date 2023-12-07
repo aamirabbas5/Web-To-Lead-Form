@@ -1,10 +1,10 @@
-function beforeSubmit() {
+function beforesubmit() {
     let outputdate = document.querySelector(".outputdate");
     let inputdate = document.querySelector(".inputdate");
     console.log("inputdate.value", inputdate.value);
 
-    let formattedDate = new Date(inputdate.value).toLocaleDateString('ur-PK');
-    outputdate.value = formattedDate;
+    let formatedDate = new Date(inputdate.value).toLocaleDateString('ur-PK');
+    outputdate.value = formatedDate;
 
     var response = grecaptcha.getResponse();
     if (response.length === 0) {
@@ -23,3 +23,20 @@ function timestamp() {
     }
 }
 setInterval(timestamp, 500);
+
+document.addEventListener("DOMContentLoaded", function() {
+    var form = document.getElementById("leadForm"); // Change 'leadForm' to your form ID
+    form.addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        // Check if reCAPTCHA is checked
+        var response = grecaptcha.getResponse();
+        if (response.length === 0) {
+            alert("Please check reCAPTCHA before submitting the form!");
+            return false;
+        } else {
+            // Proceed with form submission
+            form.submit();
+        }
+    });
+});
