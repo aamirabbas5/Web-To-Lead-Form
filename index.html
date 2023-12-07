@@ -14,9 +14,10 @@
     <h1>Create Lead</h1>
 
     <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00D5h0000092rl5" method="POST" onsubmit="beforesubmit(event)">
-        <input type="hidden" name="captcha_settings" value="{" keyname ":"WebToLeadForm ","fallback ":"true ","orgId ":"00D8V000000jOPC ","ts ":" "}"/>
-        <input type="hidden" name="oid" value="00D5h0000092rl5">
-        <input type="hidden" name="retURL" value="https://aamirabbas5.github.io/Web-To-Lead-Form/thanks.html" />
+
+        <input type=hidden name='captcha_settings' value='{"keyname":"WebToLeadForm","fallback":"true","orgId":"00D8V000000jOPC","ts":""}'>
+        <input type=hidden name="oid" value="00D8V000000jOPC">
+        <input type=hidden name="retURL" value="http://aamirabbas5.github.io/Web-To-Lead-Form/thanks.html">
         <input type="hidden" name="Lead_Date__c" class="outputdate" />
 
         <label for="first_name">First Name</label>
