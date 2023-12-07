@@ -1,3 +1,13 @@
+function submitForm(event) {
+    event.preventDefault();
+    var response = grecaptcha.getResponse();
+    if (response.length === 0) {
+        alert("Please check reCAPTCHA before submitting the form!");
+    } else {
+        document.getElementById("myForm ").submit();
+    }
+}
+
 function beforesubmit() {
     let outputdate = document.querySelector(".outputdate");
     let inputdate = document.querySelector(".inputdate");
@@ -16,17 +26,3 @@ function timestamp() {
     }
 }
 setInterval(timestamp, 500);
-
-function submitForm(event) {
-    event.preventDefault(); // Prevent the default form submission
-
-    // Check if reCAPTCHA is checked
-    var response = grecaptcha.getResponse();
-
-    if (response.length === 0) {
-        alert("Please check reCAPTCHA before submitting the form!");
-    } else {
-        // If reCAPTCHA is checked, submit the form
-        document.getElementById("myForm").submit();
-    }
-}
