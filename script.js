@@ -1,13 +1,3 @@
-function submitForm(event) {
-    event.preventDefault();
-    var response = grecaptcha.getResponse();
-    if (response.length === 0) {
-        alert("Please check reCAPTCHA before submitting the form!");
-    } else {
-        document.getElementById("myForm ").submit();
-    }
-}
-
 function beforesubmit() {
     let outputdate = document.querySelector(".outputdate");
     let inputdate = document.querySelector(".inputdate");
@@ -15,6 +5,13 @@ function beforesubmit() {
 
     let formatedDate = new Date(inputdate.value).toLocaleDateString('ur-PK');
     outputdate.value = formatedDate;
+
+    var response = grecaptcha.getResponse();
+    if (response.length === 0) {
+        alert("Please check reCAPTCHA before submitting the form!");
+        return false;
+    }
+    return true;
 }
 
 function timestamp() {
