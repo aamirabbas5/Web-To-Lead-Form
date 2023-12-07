@@ -25,17 +25,14 @@ function timestamp() {
 setInterval(timestamp, 500);
 
 document.addEventListener("DOMContentLoaded", function() {
-    var form = document.getElementById("leadForm"); // Change 'leadForm' to your form ID
+    var form = document.getElementById("leadForm");
     form.addEventListener("submit", function(event) {
-        event.preventDefault(); // Prevent default form submission
-
-        // Check if reCAPTCHA is checked
+        event.preventDefault();
         var response = grecaptcha.getResponse();
         if (response.length === 0) {
             alert("Please check reCAPTCHA before submitting the form!");
             return false;
         } else {
-            // Proceed with form submission
             form.submit();
         }
     });
